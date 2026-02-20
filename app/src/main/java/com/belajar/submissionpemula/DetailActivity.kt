@@ -1,20 +1,32 @@
 package com.belajar.submissionpemula
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.belajar.submissionpemula.model.Item
+import android.widget.ImageView
+import android.widget.TextView
+
 
 class DetailActivity : AppCompatActivity() {
+
+    companion object {
+        const val EXTRA_ITEM = "EXTRA_ITEM"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_detail)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val item = intent.getParcelableExtra<Item>(EXTRA_ITEM)
+
+        val img: ImageView = findViewById(R.id.imgDetail)
+        val tvName: TextView = findViewById(R.id.tvDetailName)
+        val tvDesc: TextView = findViewById(R.id.tvDetailDesc)
+
+        item?.let {
+            img.setImageResource(it.photo)
+            tvName.text = it.name
+            tvDesc.text = it.longDesc
         }
     }
 }

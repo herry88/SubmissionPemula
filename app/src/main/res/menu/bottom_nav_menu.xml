@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        android:fillColor="?attr/colorPrimary" />
+
+    <item
+        android:id="@+id/about_page"
+        android:icon="@drawable/ic_person"
+        android:title="About"
+        android:fillColor="?attr/colorPrimary" />
+
 </menu>
